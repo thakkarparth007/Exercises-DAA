@@ -44,4 +44,16 @@ A1 = A0 - Fn x Fn = (Fn x Fn+1) - (Fn x Fn)
 
 This is the same problem, of size n-1. We can thus solve this using recursion, and the time efficiency is O(n).
 
+********************************************************************************
+12. In the language of your choice, implement two algorithms for computing the
+last five digits of the nth Fibonacci number that are based on (a) the recursive
+definition-based algorithm F(n); (b) the iterative definition-based algorithm
+Fib(n). Perform an experiment to find the largest value of n for which your
+programs run under 1 minute on your computer.
 
+Answer:
+Code is in 2.5.12.py
+The result:
+
+Recursive method - max n = 38 ( ~66 seconds )
+Iterative method - max n = 211922728 ( ~60 seconds )
