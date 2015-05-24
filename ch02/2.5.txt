@@ -1,0 +1,47 @@
+3. Climbing stairs: Find the number of different ways to climb an n-stair stair-case if each step is either one or two stairs. For example, a 3-stair staircase can be climbed three ways: 1-1-1, 1-2, and 2-1.
+
+Answer:
+Let F(n) = number of ways to climb an n-stair staircase with each step being either one or two stairs.
+
+Then two things can happen - walk one step first, or walk two steps first.
+In first case, you'll be left with the same problem of size n-1, and in the second case you'll be left with the same problem of size n-2.
+
+Thus, F(n) = F(n-1) + F(n-2)
+So, the answer: nth Fibonacci number.
+
+********************************************************************************
+4. How many even numbers are there among the first n Fibonacci numbers, i.e., among the numbers F(0), F(1), ... , F(n − 1)? Give a closed-form formula valid for every n > 0.
+
+Answer:
+floor(n/3)
+
+********************************************************************************
+10. How many modulo divisions are made by Euclid’s algorithm on two consecutive Fibonacci numbers F(n) and F(n − 1) as the algorithm’s input?
+
+Answer:
+GCD( F(n), F(n-1) ) = GCD( F(n-1), F(n)%F(n-1) )
+
+But, F(n) = F(n-1) + F(n-2) < 2xF(n-1)
+Thus, floor( F(n)/F(n-1) ) = 1
+Thus, F(n) % F(n-1) = F(n-2)
+
+Thus, GCD( Fn, Fn-1 ) = GCD( Fn-1, Fn-2 ) = ...
+
+Hence, the modulo division will be invoked n times.
+
+********************************************************************************
+11. Dissecting a Fibonacci rectangle: Given a rectangle whose sides are two consecutive Fibonacci numbers, design an algorithm to dissect it into squares with no more than two squares being the same size. What is the time efficiency class of your algorithm?
+
+Answer:
+The area of the rectangle is:
+A0 = Fn x Fn+1
+
+Create a square of side Fn, and paste it along one of the sides of the rectangle of length Fn
+
+The area of the remaining rectangle, A1, is then:
+A1 = A0 - Fn x Fn = (Fn x Fn+1) - (Fn x Fn)
+   = Fn-1 x Fn
+
+This is the same problem, of size n-1. We can thus solve this using recursion, and the time efficiency is O(n).
+
+
