@@ -1,5 +1,4 @@
 from timeit import Timer
-from math import floor
 
 MOD = 100000	# to calculate last 5 digits, compute everything mod this.
 
@@ -28,24 +27,24 @@ print """This program will compute the maximum values of n, such that
 the nth Fibonacci number is computed under 1 minute, using 
 both - recursive and iterative algorithms."""
 
-# n = 0
-# t = 0
-# while t < 60:
-# 	t = Timer("fib_rec(n)", "from __main__ import fib_rec, n").timeit(1)
-# 	print "Time for n=%d is %fs\n" % (n, t)
-# 	n = n+1
-
-# print "*******************************************************\n"
-# print "Max n using recursive algorithm: %d\n" % (n-1,)
-# print "*******************************************************\n"
-
-n = 201326592
+n = 0
 t = 0
 while t < 60:
-	print "Now timing n=%d\n" % (n,)
+	t = Timer("fib_rec(n)", "from __main__ import fib_rec, n").timeit(1)
+	print "Time for n=%d is %fs\n" % (n, t)
+	n = n+1
+
+print "*******************************************************\n"
+print "Max n using recursive algorithm: %d\n" % (n-1,)
+print "*******************************************************\n"
+
+n = 1
+t = 0
+while t < 60:
 	t = Timer("fib_iter(n)", "from __main__ import fib_iter, n").timeit(1)
 	print "Time for n=%d is %fs\n" % (n, t)
-	n = floor(1.5*n)
+	n = 2*n 	# used doubling, because here the final answer will be huge.
+				# no point in incrementing n by 1. It'll be terribly slow!
 
 print "*******************************************************\n"
 print "Max n using iterative algorithm: %d\n" % (n-1,)
